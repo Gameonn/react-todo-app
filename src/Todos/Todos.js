@@ -30,7 +30,7 @@ class Todos extends Component {
         let newTodos = JSON.parse(localStorage.getItem("todosArray"));
         for (let i = 0; i < newTodos.length; i++) {
             if (newTodos[i]['title'] === title) {
-              newTodos[i].done = true;
+              newTodos[i].done = !newTodos[i].done;
               break;
             }
           }
@@ -40,6 +40,7 @@ class Todos extends Component {
     }
 
     selectTodoHandler = (id) => {
+        console.log(id);
         this.props.history.push('/todos/' + id);
     }
 
@@ -56,12 +57,15 @@ class Todos extends Component {
         }
 
         return (
-            <Container maxWidth="sm" style={{border: '1px solid', background: '#d8cbb9b8'}}>
-                <List component="nav" aria-label="main">
-                    {todos}
-                </List>
-                <Route path={this.props.match.url + "/:id"} exact component={TodoDetail} />
-            </Container>
+            <div>
+                <Container maxWidth="sm" style={{border: '1px solid', background: '#d8cbb9b8'}}>
+                    <List component="nav" aria-label="main">
+                        {todos}
+                    </List>
+                </Container>
+                <Route path={this.props.match.url + "/:id"} component={TodoDetail} exact/>
+            </div>
+
         );
     }
 }
