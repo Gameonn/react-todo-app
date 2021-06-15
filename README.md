@@ -1,6 +1,6 @@
 # React Todo App
 
-Saves all the data in local storage
+Manage your todo list and save all the data in local storage.
 
 **Check the demo:**
 
